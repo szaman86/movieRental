@@ -56,23 +56,29 @@ class Customer
      */
     public function getStatement()
     {
-        $totalAmount = 0;
         $frequentRenterPoints = 0;
+
+        // Initial statement
         $result = "Rental Record for " . $this->getName() . "\n";
+
         foreach ($this->rentals as $rental) {
             /* @var $rental Rental */
             $thisAmount = 0;
 
             //determine amounts for each line
             switch ($rental->getFilm()->getPriceCode()) {
+
+                // Basic
                 case Film::REGULAR:
                     $thisAmount += 2;
                     if ($rental->getDaysRented() > 2)
                         $thisAmount += ($rental->getDaysRented() - 2) * 1.5;
                     break;
+
                 case Film::NEW_RELEASE:
                     $thisAmount += $rental->getDaysRented() * 3;
                     break;
+
                 case Film::CHILDRENS:
                     $thisAmount += 1.5;
                     if ($rental->getDaysRented() > 3)
@@ -89,7 +95,6 @@ class Customer
 
             //show figures for this rental
             $result .= "\t" . $rental->getFilm()->getTitle() . "\t" . $thisAmount . "\n";
-            $totalAmount += $thisAmount;
         }
 
         return $result;
