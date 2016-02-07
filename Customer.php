@@ -11,23 +11,23 @@ namespace movieRental;
 class Customer
 {
 
-    private $_name;
-    private $_rentals;
+    private $name;
+    private $rentals;
 
     public function __construct($name)
     {
-        $this->_name = $name;
-        $this->_rentals = array();
+        $this->name = $name;
+        $this->rentals = array();
     }
 
     public function addRental($rental)
     {
-        array_push($this->_rentals, $rental);
+        array_push($this->rentals, $rental);
     }
 
     public function getName()
     {
-        return $this->_name;
+        return $this->name;
     }
 
     public function getStatement()
@@ -35,7 +35,7 @@ class Customer
         $totalAmount = 0;
         $frequentRenterPoints = 0;
         $result = "Rental Record for " . $this->getName() . "\n";
-        foreach ($this->_rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             /* @var $rental Rental */
             $thisAmount = 0;
 

@@ -6,17 +6,21 @@
  * Date: 07.02.16
  * Time: 12:06
  */
+
 class Rental
 {
+    private $film;
+    private $daysRented;
+
     public function __construct($film, $daysRented)
     {
-        $this->_film = $film;
-        $this->_daysRented = $daysRented;
+        $this->film = $film;
+        $this->daysRented = $daysRented;
     }
 
     public function getDaysRented()
     {
-        return $this->_daysRented;
+        return $this->daysRented;
     }
 
     /**
@@ -24,9 +28,6 @@ class Rental
      */
     public function getFilm()
     {
-        return $this->_film;
+        return $this->film;
     }
-
-    private $_film;
-    private $_daysRented;
 }

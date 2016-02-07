@@ -10,31 +10,31 @@ namespace movieRental;
 
 class Film
 {
+    const CHILDRENS = 2;
+    const REGULAR = 0;
+    const NEW_RELEASE = 1;
+
+    private $title;
+    private $priceCode;
+
     public function __construct($title, $priceCode)
     {
-        $this->_title = $title;
-        $this->_priceCode = $priceCode;
+        $this->title = $title;
+        $this->priceCode = $priceCode;
     }
 
     public function getPriceCode()
     {
-        return $this->_priceCode;
+        return $this->priceCode;
     }
 
     public function setPriceCode($value)
     {
-        $this->_priceCode = $value;
+        $this->priceCode = $value;
     }
 
     public function getTitle()
     {
-        return $this->_title;
+        return $this->title;
     }
-
-    private $_title;
-    private $_priceCode;
-
-    const CHILDRENS = 2;
-    const REGULAR = 0;
-    const NEW_RELEASE = 1;
 }
