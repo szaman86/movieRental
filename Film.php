@@ -14,7 +14,18 @@ class Film
     const REGULAR = 0;
     const NEW_RELEASE = 1;
 
+    /**
+     * Movie Title
+     *
+     * @var string
+     */
     private $title;
+
+    /**
+     * Unique code for product
+     *
+     * @var string
+     */
     private $priceCode;
 
     public function __construct($title, $priceCode)
@@ -23,16 +34,27 @@ class Film
         $this->priceCode = $priceCode;
     }
 
+    /**
+     * Setting price code for Movie
+     *
+     * @param $priceCode
+     */
+    public function setPriceCode($priceCode)
+    {
+        $this->priceCode = $priceCode;
+    }
+
+    /**
+     * @return string
+     */
     public function getPriceCode()
     {
         return $this->priceCode;
     }
 
-    public function setPriceCode($value)
-    {
-        $this->priceCode = $value;
-    }
-
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;

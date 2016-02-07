@@ -8,10 +8,23 @@
 
 namespace movieRental;
 
+use movieRental\Rental;
+
 class Customer
 {
 
+    /**
+     * Customer name
+     *
+     * @var string
+     */
     private $name;
+
+    /**
+     * Rented movies
+     *
+     * @var array
+     */
     private $rentals;
 
     public function __construct($name)
@@ -20,16 +33,27 @@ class Customer
         $this->rentals = array();
     }
 
-    public function addRental($rental)
+    /**
+     * Adding new item to rentals
+     *
+     * @param Rental $rental
+     */
+    public function addRental(Rental $rental)
     {
         array_push($this->rentals, $rental);
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function getStatement()
     {
         $totalAmount = 0;
@@ -70,5 +94,4 @@ class Customer
 
         return $result;
     }
-
 }
