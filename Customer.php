@@ -1,63 +1,19 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: bmarszal
+ * Date: 07.02.16
+ * Time: 12:07
+ */
 
-class Film
-{
-    public function __construct($title, $priceCode)
-    {
-        $this->_title = $title;
-        $this->_priceCode = $priceCode;
-    }
-
-    public function getPriceCode()
-    {
-        return $this->_priceCode;
-    }
-
-    public function setPriceCode($value)
-    {
-        $this->_priceCode = $value;
-    }
-
-    public function getTitle()
-    {
-        return $this->_title;
-    }
-
-    private $_title;
-    private $_priceCode;
-
-    const CHILDRENS = 2;
-    const REGULAR = 0;
-    const NEW_RELEASE = 1;
-}
-
-class Rental
-{
-    public function __construct($film, $daysRented)
-    {
-        $this->_film = $film;
-        $this->_daysRented = $daysRented;
-    }
-
-    public function getDaysRented()
-    {
-        return $this->_daysRented;
-    }
-
-    /**
-     * @return Film
-     */
-    public function getFilm()
-    {
-        return $this->_film;
-    }
-
-    private $_film;
-    private $_daysRented;
-}
+namespace movieRental;
 
 class Customer
 {
+
+    private $_name;
+    private $_rentals;
+
     public function __construct($name)
     {
         $this->_name = $name;
@@ -115,6 +71,4 @@ class Customer
         return $result;
     }
 
-    private $_name;
-    private $_rentals;
 }
