@@ -10,7 +10,7 @@ namespace movieRental;
 
 class Film
 {
-    const CHILDRENS = 2;
+    const CHILDREN = 2;
     const REGULAR = 0;
     const NEW_RELEASE = 1;
 

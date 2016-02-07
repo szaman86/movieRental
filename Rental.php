@@ -70,7 +70,7 @@ class Rental
                 $coast = $rental->getDaysRented() * 3;
                 return $coast;
 
-            case Film::CHILDRENS:
+            case Film::CHILDREN:
                 $coast = 1.5;
                 if ($rental->getDaysRented() > 3)
                     $coast += ($rental->getDaysRented() - 3) * 1.5;
