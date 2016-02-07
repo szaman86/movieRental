@@ -66,7 +66,7 @@ class Customer
         foreach ($this->rentals as $rental) {
             /* @var $rental Rental */
             $thisAmount = 0;
-            $thisAmount += $rental->getCoast($rental);
+            $thisAmount += $rental->getCoast();
 
             // add frequent renter points
             $frequentRenterPoints++;

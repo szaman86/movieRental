@@ -53,27 +53,26 @@ class Rental
     }
 
     /**
-     * @param Rental $rental
-     * @return int
+     * @return float|int
      */
-    public function getCoast(Rental $rental)
+    public function getCoast()
     {
-        switch ($rental->getFilm()->getPriceCode()) {
+        switch ($this->getFilm()->getPriceCode()) {
 
             case Film::REGULAR:
                 $coast = 2;
-                if ($rental->getDaysRented() > 2)
-                    $coast += ($rental->getDaysRented() - 2) * 1.5;
+                if ($this->getDaysRented() > 2)
+                    $coast += ($this->getDaysRented() - 2) * 1.5;
                 return $coast;
 
             case Film::NEW_RELEASE:
-                $coast = $rental->getDaysRented() * 3;
+                $coast = $this->getDaysRented() * 3;
                 return $coast;
 
             case Film::CHILDREN:
                 $coast = 1.5;
-                if ($rental->getDaysRented() > 3)
-                    $coast += ($rental->getDaysRented() - 3) * 1.5;
+                if ($this->getDaysRented() > 3)
+                    $coast += ($this->getDaysRented() - 3) * 1.5;
                 return $coast;
 
             //TODO: Consult if we should use default
