@@ -1,0 +1,1 @@
+Demonstrate how you would refactor the following code without changing the behaviour. Include a brief list of the changes you made along with the improved code.
