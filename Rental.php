@@ -8,8 +8,6 @@
  */
 namespace movieRental;
 
-use movieRental\Film;
-
 class Rental
 {
 
@@ -27,6 +25,11 @@ class Rental
      */
     private $daysRented;
 
+    /**
+     * Rental constructor.
+     * @param Film $film
+     * @param $daysRented
+     */
     public function __construct(Film $film, $daysRented)
     {
         $this->film = $film;
@@ -47,5 +50,33 @@ class Rental
     public function getFilm()
     {
         return $this->film;
+    }
+
+    /**
+     * @param Rental $rental
+     * @return int
+     */
+    public function getCoast(Rental $rental)
+    {
+        switch ($rental->getFilm()->getPriceCode()) {
+
+            case Film::REGULAR:
+                $coast = 2;
+                if ($rental->getDaysRented() > 2)
+                    $coast += ($rental->getDaysRented() - 2) * 1.5;
+                return $coast;
+
+            case Film::NEW_RELEASE:
+                $coast = $rental->getDaysRented() * 3;
+                return $coast;
+
+            case Film::CHILDRENS:
+                $coast = 1.5;
+                if ($rental->getDaysRented() > 3)
+                    $coast += ($rental->getDaysRented() - 3) * 1.5;
+                return $coast;
+
+            //TODO: Consult if we should use default
+        }
     }
 }

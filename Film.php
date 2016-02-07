@@ -28,6 +28,11 @@ class Film
      */
     private $priceCode;
 
+    /**
+     * Film constructor.
+     * @param $title
+     * @param $priceCode
+     */
     public function __construct($title, $priceCode)
     {
         $this->title = $title;
@@ -47,16 +52,16 @@ class Film
     /**
      * @return string
      */
-    public function getPriceCode()
+    public function getTitle()
     {
-        return $this->priceCode;
+        return $this->title;
     }
 
     /**
      * @return string
      */
-    public function getTitle()
+    public function getPriceCode()
     {
-        return $this->title;
+        return $this->priceCode;
     }
 }

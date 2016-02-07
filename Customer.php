@@ -8,8 +8,6 @@
 
 namespace movieRental;
 
-use movieRental\Rental;
-
 class Customer
 {
 
@@ -27,6 +25,10 @@ class Customer
      */
     private $rentals;
 
+    /**
+     * Customer constructor.
+     * @param $name
+     */
     public function __construct($name)
     {
         $this->name = $name;
@@ -64,32 +66,13 @@ class Customer
         foreach ($this->rentals as $rental) {
             /* @var $rental Rental */
             $thisAmount = 0;
-
-            //determine amounts for each line
-            switch ($rental->getFilm()->getPriceCode()) {
-
-                // Basic
-                case Film::REGULAR:
-                    $thisAmount += 2;
-                    if ($rental->getDaysRented() > 2)
-                        $thisAmount += ($rental->getDaysRented() - 2) * 1.5;
-                    break;
-
-                case Film::NEW_RELEASE:
-                    $thisAmount += $rental->getDaysRented() * 3;
-                    break;
-
-                case Film::CHILDRENS:
-                    $thisAmount += 1.5;
-                    if ($rental->getDaysRented() > 3)
-                        $thisAmount += ($rental->getDaysRented() - 3) * 1.5;
-                    break;
-            }
+            $thisAmount += $rental->getCoast($rental);
 
             // add frequent renter points
             $frequentRenterPoints++;
 
             // add bonus for a two day new release rental
+            // TODO: Use this value in statement result
             if ($rental->getFilm()->getPriceCode() == Film::NEW_RELEASE && $rental->getDaysRented() > 1)
                 $frequentRenterPoints++;
 
